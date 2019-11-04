@@ -2,28 +2,33 @@ package com.advance.academy.adventure.books.system.model;
 
 import com.advance.academy.adventure.books.system.model.enums.EndGameType;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "steps")
 public class Step {
 
+    @Id
+    @Column(name = "id")
     private Integer id;
-    private Integer reputationChange;
+
+    @Column(name = "end_game_type")
+    @Enumerated(EnumType.STRING)
     private EndGameType endGameType;
+
+    @Column(name = "ends_game")
     private boolean endGame = false;
+
+    @Column(name = "story", columnDefinition = "TEXT")
     private String story;
+
+    @OneToMany(mappedBy = "stepGivenIn")
     private List<Choice> choiceList = new ArrayList<>();
 
     public Integer getId() {
         return id;
-    }
-
-    public Integer getReputationChange() {
-        return reputationChange;
-    }
-
-    public void setReputationChange(Integer reputationChange) {
-        this.reputationChange = reputationChange;
     }
 
     public EndGameType getEndGameType() {

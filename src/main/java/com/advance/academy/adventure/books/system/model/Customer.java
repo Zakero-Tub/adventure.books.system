@@ -2,16 +2,25 @@ package com.advance.academy.adventure.books.system.model;
 
 import com.advance.academy.adventure.books.system.model.enums.UserType;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
+    @Id
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private UserType type;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "user_name")
     private String userName;
-    private List<Hero> heroList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -41,11 +50,4 @@ public class Customer {
         this.userName = userName;
     }
 
-    public List<Hero> getHeroList() {
-        return heroList;
-    }
-
-    public void setHeroList(List<Hero> heroList) {
-        this.heroList = heroList;
-    }
 }
