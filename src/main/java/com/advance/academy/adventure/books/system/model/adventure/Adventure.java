@@ -1,6 +1,6 @@
-package com.advance.academy.adventure.books.system.model;
+package com.advance.academy.adventure.books.system.model.adventure;
 
-import org.hibernate.annotations.JoinColumnOrFormula;
+import com.advance.academy.adventure.books.system.model.Tag;
 
 import javax.persistence.*;
 import java.util.HashSet;

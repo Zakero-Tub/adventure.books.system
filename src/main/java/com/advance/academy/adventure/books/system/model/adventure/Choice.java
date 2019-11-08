@@ -1,4 +1,4 @@
-package com.advance.academy.adventure.books.system.model;
+package com.advance.academy.adventure.books.system.model.adventure;
 
 import javax.persistence.*;
 

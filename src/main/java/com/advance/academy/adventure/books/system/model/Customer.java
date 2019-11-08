@@ -1,26 +1,38 @@
 package com.advance.academy.adventure.books.system.model;
 
 import com.advance.academy.adventure.books.system.model.enums.UserType;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "customers")
+@Where(clause = "is_deleted = false")
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
+    @NotNull
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private UserType type;
 
+    @NotEmpty
     @Column(name = "email")
     private String email;
 
+    @NotEmpty
     @Column(name = "user_name")
     private String userName;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
+
 
     public Integer getId() {
         return id;
@@ -50,4 +62,11 @@ public class Customer {
         this.userName = userName;
     }
 
+    private boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 }

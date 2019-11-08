@@ -5,8 +5,11 @@ import com.advance.academy.adventure.books.system.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 @RestController
-@RequestMapping("customer")
+@RequestMapping("api/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -31,4 +34,11 @@ public class CustomerController {
         customerService.deleteCustomer(customerId);
     }
 
+    @ExceptionHandler({Exception.class})
+    public String onException(Exception e){
+        StringWriter sw = new StringWriter();
+        e.printStackTrace(new PrintWriter(sw));
+        String exceptionAsString = sw.toString();
+        return exceptionAsString;
+    }
 }
