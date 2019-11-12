@@ -1,0 +1,38 @@
+{
+  "id": "1",
+  "firstStep": {
+    "choices": [
+      {
+        "stepGivenIn": {},
+        "resultInStep": {
+          "choices": [
+            {
+              "stepGivenIn": {},
+              "resultInStep": {
+                "choices": [
+                  {
+                    "stepGivenIn": {},
+                    "resultInStep": {
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "stepGivenIn": {},
+              "resultInStep": {
+                "choices": [
+                  {
+                    "stepGivenIn": {},
+                    "resultInStep": {
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+ }

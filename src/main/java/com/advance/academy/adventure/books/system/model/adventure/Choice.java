@@ -7,19 +7,25 @@ import javax.persistence.*;
 public class Choice {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "step_given_in_id")
     private Step stepGivenIn;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "results_in_step_id")
     private Step resultsInStep;
+
+
+
+    @Column(name = "reputation_change")
+    private Integer reputationChange;
 
 
     public Integer getId() {
@@ -44,6 +50,14 @@ public class Choice {
 
     public void setResultsInStep(Step resultsInStep) {
         this.resultsInStep = resultsInStep;
+    }
+
+    public Integer getReputationChange() {
+        return reputationChange;
+    }
+
+    public void setReputationChange(Integer reputationChange) {
+        this.reputationChange = reputationChange;
     }
 
 }

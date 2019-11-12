@@ -11,6 +11,7 @@ import java.util.List;
 public class Step {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -24,7 +25,7 @@ public class Step {
     @Column(name = "story", columnDefinition = "TEXT")
     private String story;
 
-    @OneToMany(mappedBy = "stepGivenIn")
+    @OneToMany(mappedBy = "stepGivenIn", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Choice> choiceList = new ArrayList<>();
 
     public Integer getId() {
