@@ -17,7 +17,7 @@ public class Step {
 
     @Column(name = "end_game_type")
     @Enumerated(EnumType.STRING)
-    private EndGameType endGameType;
+    private EndGameType endGameType = EndGameType.NONE;
 
     @Column(name = "ends_game")
     private boolean endGame = false;
@@ -25,7 +25,7 @@ public class Step {
     @Column(name = "story", columnDefinition = "TEXT")
     private String story;
 
-    @OneToMany(mappedBy = "stepGivenIn", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "stepGivenIn", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Choice> choiceList = new ArrayList<>();
 
     public Integer getId() {

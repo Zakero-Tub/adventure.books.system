@@ -1,0 +1,33 @@
+{
+  "name" : "Ne6to Quest",
+  "story" : "Sabujda6 se v gorata. Okasyn i izplashen. Poslednoto ne6to koeto pomni6 e edna butilka rom. ",
+  "firstStep" : {
+    "story" : "Izpravq6 se i vijda6 butilkata na zemqta. Kakvo pravi6",
+    "choiceList" : [
+      {
+        "description" : "Otpiva6 ot butilkata",
+        "resultsInStep" : {
+          "story": "Sabujda6 se v gorata. Okasyn i izplashen. Poslednoto ne6to koeto pomni6 e edna butilka rom. ",
+          "choiceList": [
+            {
+              "description": "Otpiva6 ot butilkata",
+              "resultsInStep": {
+                "story": "Sabujda6 se v gorata. Okasyn i izplashen. Poslednoto ne6to koeto pomni6 e edna butilka rom. ",
+                "choiceList": [
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "description" : "Oglejda6 se naokolo",
+        "resultsInStep" : {
+          "story" : "Oglejda6 se naokolo i namira6 kompaniqta s koqto si doshyl i si tygvame",
+          "endGame":true,
+          "endGameType": "GOOD"
+        }
+      }
+    ]
+  }
+}

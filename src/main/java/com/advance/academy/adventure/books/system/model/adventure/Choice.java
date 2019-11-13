@@ -1,5 +1,8 @@
 package com.advance.academy.adventure.books.system.model.adventure;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,15 +17,15 @@ public class Choice {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "step_given_in_id")
+    @LazyToOne(LazyToOneOption.NO_PROXY)
     private Step stepGivenIn;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "results_in_step_id")
+    @LazyToOne(LazyToOneOption.NO_PROXY)
     private Step resultsInStep;
-
-
 
     @Column(name = "reputation_change")
     private Integer reputationChange;

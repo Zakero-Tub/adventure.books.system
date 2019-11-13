@@ -19,8 +19,8 @@ public class AdventureController {
     }
 
     @PostMapping
-    public void createOrUpdate(@RequestBody Adventure adventure){
-        adventureService.createOrUpdate(adventure);
+    public Adventure createOrUpdate(@RequestBody Adventure adventure){
+       return adventureService.createOrUpdate(adventure);
     }
 
     @GetMapping
