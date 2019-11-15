@@ -25,7 +25,7 @@ public class Step {
     @Column(name = "story", columnDefinition = "TEXT")
     private String story;
 
-    @OneToMany(mappedBy = "stepGivenIn", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "stepGivenIn", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<Choice> choiceList = new ArrayList<>();
 
     public Integer getId() {

@@ -1,6 +1,7 @@
 package com.advance.academy.adventure.books.system.service;
 
 import com.advance.academy.adventure.books.system.model.Hero;
+import com.advance.academy.adventure.books.system.model.adventure.Adventure;
 import com.advance.academy.adventure.books.system.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,12 @@ public class HeroService {
         this.heroRepository = heroRepository;
     }
 
-    public void createOrUpdate (Hero hero){
-        heroRepository.save(hero);
+    public Hero createOrUpdate (Hero hero){
+        hero.setCurrentReputation(
+                heroRepository.getReference(Adventure.class, hero.getAdventure().getId()).getStartingReputation());
+        hero.setNumberOfLives(
+                heroRepository.getReference(Adventure.class, hero.getAdventure().getId()).getNumberOfLives());
+        return heroRepository.save(hero);
     }
 
     public List<Hero> getHeroesByCustomerId(Integer customerId){

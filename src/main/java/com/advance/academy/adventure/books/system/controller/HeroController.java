@@ -19,6 +19,11 @@ public class HeroController {
     }
 
 
+    @PostMapping
+    public Hero createOrUpdate(@RequestBody Hero hero){
+        return heroService.createOrUpdate(hero);
+    }
+
     @GetMapping(value = "list/customer/{customerId}")
     public List<Hero> getHeroList(@PathVariable("customerId") Integer customerId){
         return heroService.getHeroesByCustomerId(customerId);
