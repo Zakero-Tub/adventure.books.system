@@ -2,6 +2,8 @@ package com.advance.academy.adventure.books.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application {
@@ -10,4 +12,16 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
+
+	/* - @Qualifier
+		@Bean
+	public RestTemplate xmlrestTemplate(){
+		return new RestTemplate();
+	}
+
+	 */
 }
