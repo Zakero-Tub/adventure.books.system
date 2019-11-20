@@ -2,6 +2,7 @@ package com.advance.academy.adventure.books.system.repository;
 
 import com.advance.academy.adventure.books.system.model.Customer;
 import com.advance.academy.adventure.books.system.model.enums.UserType;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -21,6 +22,14 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Query(value = "SELECT c.* FROM customers c where c.user_type=:userType", nativeQuery = true)
     List<Customer> getByUserTypeNativeQuery(@Param("userType") UserType userType);
 
+    @Modifying
     @Query("UPDATE Customer SET isDeleted = true WHERE id = :customerId ")
     void deactivateCustomer(@Param("customerId") Integer id);
+
+    @Modifying
+    @Query("UPDATE Customer SET isDeleted = true WHERE id = :customerId AND userName=:userName ")
+    void deactivateCustomer(
+            @Param("customerId") Integer id,
+            @Param("userName") String userName
+    );
 }
